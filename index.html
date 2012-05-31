@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>BicBucStriim by rvolz</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>BicBucStriim</h1>
+        <p>BicBucStriim streams books, digital books. It fills a gap in the functionality of current NAS devices that provide access to music, videos and photos -- but not books. BicBucStriim fills this gap and provides web-based access to your e-book collection.</p>
+        <p class="view"><a href="https://github.com/rvolz/BicBucStriim">View the Project on GitHub <small>rvolz/BicBucStriim</small></a></p>
+        <ul>
+          <li><a href="https://github.com/rvolz/BicBucStriim/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/rvolz/BicBucStriim/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/rvolz/BicBucStriim">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>BicBucStriim</h1>
+
+<p>BicBucStriim streams books, digital books. It fills a gap in the functionality of current NAS devices that provide access to music, videos and photos -- but not books. BicBucStriim fills this gap and provides web-based access to your e-book collection.</p>
+
+<p>BicBucStriim was created when I bought a NAS device (Synology DS 512+) to store my media on it. NAS devices like the Synology DS typically include media servers that publish audio, video, photos, so that you can access your media from all kinds of devices (TV, smart phone, laptop ...) inside the house, which is very convenient. Unfortunately there is nothing like that for e-books. So BicBucStriim was created.</p>
+
+<p>BicBucStriim is a simple PHP application that runs in the Apache/PHP environment provided by the NAS. It assumes that you manage your e-book collection with <a href="http://calibre-ebook.com/">Calibre</a>. The application reads the Calibre data and publishes it in HTML form. To access the e-book catalog you simply point your ebook reader to your NAS, select one of your e-books and download it. </p>
+
+<h2>Alternatives</h2>
+
+<p>BicBucStriim is intended for in-house usage, on a NAS or a similar device without much memory and processing power. On a PC you could simply use the Content Server built into Calibre.</p>
+
+<p>If you are looking for a possibility to publish a larger book collection, or want to publish on the Internet, then <a href="http://calibre2opds.com/">calibre2opds</a> might be interesting. It generates a static HTML catalog of a Calibre library that then can be transferred to a web server.</p>
+
+<h2>Status</h2>
+
+<p>BicBucStriim is still under development. Version 0.6.1 of BicBucStriim: </p>
+
+<ul>
+<li>displays the 30 most recent titles on the index page</li>
+<li>provides a listing of all books </li>
+<li>provides a listing of all authors</li>
+<li>provides detail pages (including download links) for authors and books</li>
+<li>includes filtering/searching for books and authors</li>
+<li>is bilingual, English/German</li>
+<li>is ready for mobile clients (tested with Kindle, iPhone, iPad)</li>
+</ul><h2>Install</h2>
+
+<p>The easy way assumes that BicBucStriim lives right below the web root of your device and can be addressed like <code>http://&lt;your ip&gt;/bbs/</code>:</p>
+
+<ul>
+<li>Download a installation archive from <a href="https://github.com/rvolz/BicBucStriim/downloads">GitHub</a>.</li>
+<li>Unarchive the downloaded archive below the web server root of your NAS (e.g. "/volume1/web" on a Synology device)</li>
+<li>Rename the newly created directory (e.g. BicBucStriim-0.5.0.zip) to "bbs".</li>
+<li>NOTE: If you don't want to use the directory name <em>bbs</em> simply change the .htaccess file accordingly (the line "RewriteBase /bbs/")</li>
+<li>Make the "logs" directory writeable for all: <code>chmod ga+w logs</code>
+</li>
+<li>Enter the full path to your Calibre library directory in config.php</li>
+<li>BicBucStriim should now be working, start your web browser and navigate to <code>http://&lt;address of your NAS&gt;/bbs/</code>
+</li>
+</ul><h2>Requirements</h2>
+
+<ul>
+<li>Apache web server with PHP 5.2+ and sqlite3 support</li>
+</ul><h2>License</h2>
+
+<p>BicBucStriim itself is licensed under the MIT license, for the licenses of the libraries used see the file NOTICE.</p>
+
+<p>(The MIT License)</p>
+
+<p>Copyright (c) 2012 Rainer Volz</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/rvolz">rvolz</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
