@@ -18,7 +18,7 @@
         <h1>BicBucStriim</h1>
         <p>BicBucStriim streams books, digital books. It fills a gap in the functionality of current NAS devices, which provide access to your collection of music, videos and photos -- but not books. BicBucStriim covers that area and provides web-based access to your e-book collection.</p>
         <p class="view"><a href="https://github.com/rvolz/BicBucStriim">View the Project on GitHub <small>rvolz/BicBucStriim</small></a></p>
-        <p class="view"><a href="https://github.com/downloads/rvolz/BicBucStriim/BicBucStriim-0.7.0.zip">Download the current installation archive<small>(ZIP, Version 0.7.0)</small></a></p>
+        <p class="view"><a href="https://github.com/downloads/rvolz/BicBucStriim/BicBucStriim-0.8.0.zip">Download the current installation archive<small>(ZIP, Version 0.7.0)</small></a></p>
         <p class="view"><a href="https://github.com/rvolz/BicBucStriim/issues">Found an error?<small>Report it on GitHub</small></a></p>        
       </header>
       <section>
@@ -36,9 +36,10 @@
 
 <h2>Status</h2>
 
-<p>BicBucStriim is still under development. Version 0.7.0 of BicBucStriim: </p>
+<p>BicBucStriim is still under development. Version 0.8.0 of BicBucStriim: </p>
 
 <ul>
+<li>is easy to install</li>
 <li>displays the 30 most recent titles on the index page</li>
 <li>provides listing/filtering/searching for book titles</li>
 <li>provides listing/filtering/searching for authors</li>
@@ -47,7 +48,15 @@
 <li>is ready for mobile clients (tested with Kindle, iPhone, iPad)</li>
 <li>offers an optional download protection for books (think "parental control")</li>
 <li>is bilingual, English/German</li>
+<li>has an admin GUI for configuration</li>
+</ul>
 
+<p>New in version 0.8.0</p>
+
+<ul>
+  <li>Easier installation/configuration: no textfile editing anymore, all settings can be configured in the admin section</li>
+  <li>more pictures: book title listings include cover thumbnails</li>
+  <li>more data: author and tags listings show the number of books per item for easier orientation</li>
 </ul>
 
 
@@ -55,11 +64,11 @@
 
 <p>BicBucStriim just displays what is stored in your Calibre library. The start page lists the 30 most recent books in your library, assuming that they are new and therefore need to be read:</p>
 
-<p><img src="img/bbs-070-index-en.png" alt="The index lists the 30 most recent books."/></p>
+<p><img src="img/bbs-080-index-en.png" alt="The index lists the 30 most recent books."/></p>
 
 <p>In addition the main menu shows three ways to navigate through your library, by book title (<em>books</em>), author name (<em>authors</em>) and tag (<em>tags</em>). All three sections work in the same way, you either scroll through the listing or filter/search by entering something in the search bar at the top.</p>
 
-<p><img src="img/bbs-070-listing-en.png" alt="Navigating thorugh your library by book title"/></p>
+<p><img src="img/bbs-080-listing-en.png" alt="Navigating through your library by book title"/></p>
 
 <p>Once a book is selected, the app shows a details page with title, author information, tags and the book description. In the download section of that page there are download links for all book formats stored in the Calibre library. Click on a link and the book file will be immediately sent to your device.</p>
 
@@ -70,36 +79,53 @@
 <p>The easy way assumes that BicBucStriim lives right below the web root of your device and can be addressed like <code>http://&lt;your ip&gt;/bbs/</code>:</p>
 
 <ul>
-<li>Download a installation archive from <a href="https://github.com/rvolz/BicBucStriim/downloads">GitHub</a>.</li>
-<li>Unarchive the downloaded archive below the web server root of your NAS (e.g. "/volume1/web" on a Synology device)</li>
-<li>Rename the newly created directory (e.g. BicBucStriim-0.7.0) to "bbs".</li>
-<li>Make the "logs" directory writeable for all, e.g. <code>chmod ga+w logs</code></li>
+  <li>
+    Download a installation archive from <a href="https://github.com/rvolz/BicBucStriim/downloads">GitHub</a>.
+  </li>
+  <li>
+    Unarchive the downloaded archive below the web server root of your NAS (e.g. "/volume1/web" on a Synology device)
+  </li>
+  <li>
+    Rename the newly created directory (e.g. BicBucStriim-0.7.0) to "bbs".
+  </li>
+  <li>
+    The "data" directory and its contents must be writeable for all. Depending on your method of unarchiving this might be already the case. However, in case you experience access error just use a terminal to correct this: `chmod -R ga+w data`.
+  </li>
+  <li>
+    A freshly installed BicBucStriim app will show you the admin section, where you will have tell the app where your Calibre library is located. Everything else is optional. Just have a look ang navigate to: `http://<address of your NAS>/bbs/`.
 </ul>
+
 
 <h3>Tell BicBucStriim where your Calibre library lives</h3>
 
-<p>Configuration is easy. Just copy the file <code>config.php.template</code> to <code>config.php</code> and edit the latter with the text editor of your choice.</p>
+<p><img src="img/bbs-080-admin-en.png" alt="Everthing can be configured in the admin section"/></p>
 
-<p>BicBucStriim needs to know where you Calibre library directory resides, the full path to the folder that contains your metadata.db and the book directories. In my case that is <code>/volume1/books/</code> so the configuration entry looks like:</p>
+<p>BicBucStriim needs to know where you Calibre library directory resides, the full path to the folder that contains your metadata.db and the book directories. In my case that is <code>/volume1/books</code> so I entered this path in the admin page.</p>
 
-<p class="highlight"><span class="nv">$calibre_dir</span> <span class="o">=</span> <span class="s1">&#39;/volume1/books&#39;</span><span class="p">;</span></p>
+<p>That is all you need to do to get BicBucStriim running. Save and navigate to the start page. The index page should appear.</p> 
 
-<p>That is all you need to do to get BicBucStriim running. Save and close the file, start your web browser and navigate to <code>http://&lt;address of your NAS&gt;/bbs/</code>. The index page should appear.</p>
+<p>If the app can't access the Calibre library it will tell you. BicBucStriim looks for a valid Calibre libraray directory with file `metadata.db` at the top. The most common problems are access errors. The app must be able to access the library. In case of problems you should adjust your access restrictions for the Calibre directory.</p>
+
+<h3>Optional: Protect the admin section</h3>
+
+<p>If you are sharing your home network with others you might want to restrict access to BicBucStriims admin page so that nobody can change the settings/passwords. To do this simply enter an admin password and save again. From then on the admin page is only accessible for people with the right password.</p>
 
 <h3>Optional: Download protection</h3>
 
 <p>BicBucStriim is a personal application and assumes that it is running in a safe environment. The emphasis is on conveniency in your home LAN, so there is not much security built in. However, for situations where <em>parental control</em>, or something like that, is necessary, we have the download protection. When activated users need a password to download book files. By default downloads are not protected.</p>
 
-<p>To switch the download protection on, open <code>config.php</code> again and set the toggle for this feature to <code>true</code>:</p> 
+<p>By default the download protection is switched off. If you want to enable it you have two options:</p> 
 
-<p class="highlight"><span class="nv">$glob_dl_toggle</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span></p>
+<ol>
+  <li>
+    Reuse the admin password: if you already have an admin password and won't have to share it just click on this option. Book downloads will be protected using your admin password. You don't need to have two passwords in this case.
+  </li>
+  <li>
+    If the above scenario doesn't fit, you can simply use a separate password for download.
+  </li>
+</ol>
 
-<p>Then enter a suitable password:</p>
-
-<p class="highlight"><span class="nv">$glob_dl_password</span> <span class="o">=</span> <span class="s1">&#39;7094e7dc2feb759758884333c2f4a6bdc9a16bb2&#39;</span><span class="p">;</span>
-</p>
-
-<p>That's it. (To turn it off again just set the toggle to <code>false</code>.) The download links will now only appear if the valid password was entered:</p>
+<p>That's it. (To turn download protection off just click the <em>No</em> option.) The download links will now only appear if the valid password was entered:</p>
 
 <p><img src="img/bbs-070-dlprot-en.png" alt="Download protection in action"/></p>
 
