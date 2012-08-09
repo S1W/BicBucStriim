@@ -18,8 +18,8 @@
         <h1>BicBucStriim</h1>
         <p>BicBucStriim streams books, digital books. It fills a gap in the functionality of current NAS devices, which provide access to your collection of music, videos and photos -- but not books. BicBucStriim covers that area and provides web-based access to your e-book collection.</p>
         <p class="view"><a href="https://github.com/rvolz/BicBucStriim">View the Project on GitHub <small>rvolz/BicBucStriim</small></a></p>
-        <p class="view"><a href="https://github.com/downloads/rvolz/BicBucStriim/BicBucStriim-0.8.0.zip">Download the current installation archive<small>(ZIP, Version 0.8∏.0)</small></a></p>
-        <p class="view"><a href="https://github.com/rvolz/BicBucStriim/issues">Found an error?<small>Report it on GitHub</small></a></p>        
+        <p class="view"><a href="https://github.com/downloads/rvolz/BicBucStriim/BicBucStriim-0.9.2.zip">Download the current installation archive<small>(ZIP, Version 0.9)</small></a></p>
+        <p class="view"><a href="https://github.com/rvolz/BicBucStriim/issues">Found an error? Have a suggestion?<small>Report it on GitHub</small></a></p>        
       </header>
       <section>
       <h1>BicBucStriim</h1>
@@ -36,27 +36,30 @@
 
 <h2>Status</h2>
 
-<p>BicBucStriim is still under development. Version 0.8.0 of BicBucStriim: </p>
+<p>BicBucStriim is still under development. Version 0.9.1 of BicBucStriim: </p>
 
 <ul>
 <li>is easy to install</li>
-<li>displays the 30 most recent titles on the index page</li>
+<li>shows the 30 most recent titles on the index page</li>
 <li>provides listing/filtering/searching for book titles</li>
 <li>provides listing/filtering/searching for authors</li>
 <li>provides listing/filtering/searching for tags</li>
+<li>provides listing/filtering/searching for series</li>
 <li>shows detail pages for authors and books (including download links) </li>
 <li>is ready for mobile clients (tested with Kindle, iPhone, iPad)</li>
+<li>provides OPDS book catalogs for reading apps like Stanza  (<a href="#opds">more</a>)</li>
 <li>offers an optional download protection for books (think "parental control")</li>
-<li>is bilingual, English/German</li>
+<li>is trilingual, English/French/German</li>
 <li>has an admin GUI for configuration</li>
 </ul>
 
-<p>New in version 0.8.0</p>
+<p>New in version 0.9</p>
 
 <ul>
-  <li>Easier installation/configuration: no textfile editing anymore, all settings can be configured in the admin section</li>
-  <li>more pictures: book title listings include cover thumbnails</li>
-  <li>more data: author and tags listings show the number of books per item for easier orientation</li>
+  <li>a french translation</li>
+  <li>support for book series</li>
+  <li>paginated listings for naviagtion larger libraries</li>
+  <li>OPDS catalog support</li>
 </ul>
 
 
@@ -129,11 +132,35 @@
 
 <p><img src="img/bbs-070-dlprot-en.png" alt="Download protection in action"/></p>
 
+<h3>Optional: Change the look of thumbnails</h3>
+
+<p>
+  By default BicBucStriim generates <em>clipped</em> thumbnails for books. That means it uses the largest possible square in the middle of the book cover. That way we get a small thummbnail that still shows enough details from the original cover image.
+</p>
+<p>
+  However, if you absoloutely need to see a true representation of the cover image, just set the switch <em>Clip thumbnails?</em> to <em>No</em>, and you will get it.
+</p>
+
+<h2 id="opds">OPDS catalogs</h2>
+
+<p>
+  Starting with version 0.9 BicBucStriim provides OPDS catalogs for reading apps like Stanza or Aldiko. The main entry point for these catalogs is <code>http://.../bbs/opds/</code>.
+</p>
+<p>
+  At this stage the OPDS support provides the usual hierarchy for browsing your library by book title, author, tag or series. Searching is not yet possible.
+</p>
+<p>
+  NOTE: If the global download protection is activated it is currently not possible to download books via OPDS.
+</p>
+
 <h2>Requirements</h2>
 
 <ul>
 <li>Apache web server with PHP 5.2+ and sqlite3 support</li>
-</ul><h2>License</h2>
+<li>Optional: if mcrypt is available, it will be used to encrypt cookies</li>
+</ul>
+
+<h2>License</h2>
 
 <p>BicBucStriim itself is licensed under the MIT license, for the licenses of the libraries used see the file NOTICE.</p>
 
