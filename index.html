@@ -18,7 +18,7 @@
         <h1>BicBucStriim</h1>
         <p>BicBucStriim streams books, digital books. It fills a gap in the functionality of current NAS devices, which provide access to your collection of music, videos and photos -- but not books. BicBucStriim covers that area and provides web-based access to your e-book collection.</p>
         <p class="view"><a href="https://github.com/rvolz/BicBucStriim">View the Project on GitHub <small>rvolz/BicBucStriim</small></a></p>
-        <p class="view"><a href="https://github.com/downloads/rvolz/BicBucStriim/BicBucStriim-0.9.2.zip">Download the current installation archive<small>(ZIP, Version 0.9)</small></a></p>
+        <p class="view"><a href="https://github.com/downloads/rvolz/BicBucStriim/BicBucStriim-0.9.3.zip">Download the current installation archive<small>(ZIP, Version 0.9)</small></a></p>
         <p class="view"><a href="https://github.com/rvolz/BicBucStriim/issues">Found an error? Have a suggestion?<small>Report it on GitHub</small></a></p>        
       </header>
       <section>
@@ -95,7 +95,16 @@
     The "data" directory and its contents must be writeable for all. Depending on your method of unarchiving this might be already the case. However, in case you experience access error just use a terminal to correct this: `chmod -R ga+w data`.
   </li>
   <li>
-    A freshly installed BicBucStriim app will show you the admin section, where you will have tell the app where your Calibre library is located. Everything else is optional. Just have a look ang navigate to: `http://<address of your NAS>/bbs/`.
+    A freshly installed BicBucStriim app will show you the admin section, where you will have tell the app where your Calibre library is located. Everything else is optional. Just have a look ang navigate to: `http://&lt;address of your NAS&gt;/bbs/`.
+  </li>
+  <li>
+    <p>
+      On some NAS devices, like Synology, you also have to add the path of your Calibre library to the PHP <em>open_basedir</em> variable, if the library is located outside the web folder. For security reasons PHP can only access files in the web folder and in directories mentioned in the <em>open_basedir</em> variable.
+    </p>
+    <p>
+      On a Synology device you can set this in the <em>Control Panel</em>: navigate to 'Web Services', 'PHP Settings'. Add your Calibre library path to the end of <em>open_basedir</em> (and don't forget to separate it with a colon -- ':' -- from the other directories).
+    </p>
+  </li>
 </ul>
 
 
